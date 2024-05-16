@@ -1,0 +1,61 @@
+# vmware installer
+^/usr/lib/vmware-installer/
+
+# vmware vix
+^/usr/lib/vmware-vix/open_source_licenses\.txt$
+^/usr/lib/vmware-vix/setup/vmware-config$
+^/usr/lib/vmware-vix/vixwrapper-config\.txt$
+^/usr/lib/vmware-vix/libvixAllProducts\.so$
+^/usr/include/vmware-vix/vm_basic_types\.h$
+^/usr/include/vmware-vix/vix\.h$
+^/usr/share/doc/vmware-vix/
+
+# vmware ovftool
+^/usr/lib/vmware-ovftool/.*$
+## vmware player
+^/usr/share/doc/vmware-player/.*\.txt$
+^/usr/share/applications/vmware-player\.desktop$
+^/usr/share/appdata/vmware-player\.appdata\.xml$
+
+# vmware workstation
+^/usr/lib/vmware-vix/Workstation-.*$
+^/usr/bin/(vmrun|vmware|vmplayer|vmss2core|vmware-.*|vmnet-.*)$
+^/usr/lib/modules/[^/]+/misc/vmmon\.ko$
+^/usr/lib/modules/[^/]+/misc/vmnet\.ko$
+^/usr/lib/vmware/modules/source/vmnet\.tar$
+^/usr/lib/vmware/modules/source/vmmon\.tar$
+^/usr/share/applications/vmware-netcfg\.desktop$
+^/usr/share/applications/vmware-workstation\.desktop$
+^/usr/share/doc/vmware-workstation/EULA$
+^/usr/share/doc/vmware-workstation/.*\.txt$
+^/usr/share/doc/vmware-player/open_source_licenses\.txt$
+^/usr/sbin/vmware-authd$
+^/usr/sbin/vmware-authdlauncher$
+^/usr/share/appdata/vmware-workstation\.appdata\.xml$
+
+## vmware
+^/usr/lib/vmware/
+^/usr/lib/vmware/bin/
+^/usr/lib/vmware/configurator/
+^/usr/lib/vmware/icu/
+^/usr/lib/vmware/include/
+^/usr/lib/vmware/isoimages/
+^/usr/lib/vmware/lib/
+^/usr/lib/vmware/libconf/
+^/usr/lib/vmware/licenses/
+^/usr/lib/vmware/modules/
+^/usr/lib/vmware/resources/
+^/usr/lib/vmware/roms/
+^/usr/lib/vmware/scripts/
+^/usr/lib/vmware/setup/
+^/usr/lib/vmware/share/
+^/usr/lib/vmware/symvers/
+^/usr/lib/vmware/tools-upgraders/
+^/usr/lib/vmware/vnckeymap
+^/usr/lib/vmware/xkeymap/
+^/usr/lib/vmware/config$
+^/usr/lib/vmware/vixwrapper-product-config\.txt$
+^/usr/lib/vmware/lib/.*\.so$
+^/usr/lib/vmware/lib/.*/[^/]+\.so\.[0-9.]+$
+^/usr/lib/vmware/libconf/lib/.*\.so$
+^/usr/share/man/man1/vmware\.1\.gz$

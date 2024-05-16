@@ -1,0 +1,5 @@
+# icon cache
+^/usr/share/icons/.*\.cache$
+# TOFIX
+^/usr/share/icons/.*png$
+^/usr/share/icons/.*svg$

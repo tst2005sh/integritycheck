@@ -1,0 +1,2 @@
+^/usr/share/fonts/X11/[^/]+/encodings\.dir$
+^/usr/share/fonts/X11/[^/]+/fonts\.(dir|scale|alias)$

@@ -1,0 +1,4 @@
+# (other) cache
+^/usr/lib/x86_64-linux-gnu/.*\.cache$
+# module dependency generated (made during vmnet module compilation?)
+^/usr/lib/modules/[^/]+/modules\.[^/]*$

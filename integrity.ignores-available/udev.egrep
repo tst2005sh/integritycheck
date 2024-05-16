@@ -1,0 +1,3 @@
+# man udev
+# man systemd-hwdb (See systemd-hwdb --usr)
+^/usr/lib/udev/hwdb\.bin$

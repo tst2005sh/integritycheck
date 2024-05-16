@@ -1,0 +1,2 @@
+^/usr/share/python/debpython/[^/]+\.pyc$
+^/usr/share/python/pyversions\.pyc$

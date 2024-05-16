@@ -1,0 +1,6 @@
+^/usr/lib/cups/backend/mdns$
+^/usr/lib/cups/backend/socket$
+^/usr/lib/cups/backend/lpd$
+^/usr/lib/cups/backend/dnssd$
+^/usr/lib/cups/backend/usb$
+^/usr/lib/cups/backend/snmp$
