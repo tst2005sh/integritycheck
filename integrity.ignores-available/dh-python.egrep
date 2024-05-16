@@ -1,0 +1,1 @@
+^/usr/share/dh-python(/.*|)/__pycache__/[^/]+\.cpython-(35|37|39)\.pyc$
