@@ -1,1 +1,1 @@
-^/usr/share/apt-listchanges/__pycache__/[^/]+\.cpython-37\.pyc$
+^/usr/share/apt-listchanges/__pycache__/[^/]+\.cpython-(37|39)\.pyc$
