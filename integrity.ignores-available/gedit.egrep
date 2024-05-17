@@ -1,0 +1,2 @@
+# debian 12
+^/usr/lib/x86_64-linux-gnu/gedit/plugins/[^/]+/__pycache__/[^/]+\.cpython-311\.pyc$

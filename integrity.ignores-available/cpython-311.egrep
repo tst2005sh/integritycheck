@@ -1,0 +1,3 @@
+^/usr/lib/python3/dist-packages(/.*|)/__pycache__/[^/]+\.cpython-311(\.opt-1|)\.pyc$
+^/usr/lib/python3\.11(/.*|)/__pycache__/[^/]+\.cpython-311(\.opt-1|)\.pyc$
+^/usr/share/python3(/.*|)/__pycache__/[^/]+\.cpython-311\.pyc$
