@@ -9,6 +9,7 @@ OPT_VERBOSE=false
 OPT_DEBUG=false
 OPT_NO_CACHE=false
 OPT_IGNORE_AVAILABLE=false
+OPT_IGNORE_LOCAL=false
 while [ $# -gt 0 ]; do
 	case "$1" in
 	(-v) OPT_VERBOSE=true ;;
@@ -16,12 +17,14 @@ while [ $# -gt 0 ]; do
 	(--debug|--cache) OPT_DEBUG=true ;;
 	(-f|--no-cache) OPT_NO_CACHE=true ;;
 	(-I|--ignore-available) OPT_IGNORE_AVAILABLE=true ;;
+	(-L|--ignore-local) OPT_IGNORE_LOCAL=true ;;
 	(--) shift;break;;
 	(-*) echo >&2 "ERROR unknown option $1"; exit 1;;
 	esac
 	shift
 done
 
+ignorelocaldir=integrity.ignores-local
 ignoredir=integrity.ignores-enabled
 if ${OPT_IGNORE_AVAILABLE:-false}; then
 	ignoredir=integrity.ignores-available
@@ -70,6 +73,11 @@ if ${OPT_NO_CACHE:-false} || ! ${cachefound:-false}; then
 fi
 
 grep 2>/dev/null -hv '^$' "${ignoredir}"/*.egrep > "$tmp_ignore_egrep"
+
+if ${OPT_IGNORE_LOCAL:-false} && [ -d "${ignorelocaldir}" ]; then
+	grep 2>/dev/null -hv '^$' "${ignorelocaldir}"/*.egrep >> "$tmp_ignore_egrep"
+fi
+
 if ${OPT_VERBOSE:-false}; then
 	grep -h -E -f "$tmp_ignore_egrep" "$tmp_cache" |
 	sed -e 's,^,~ok: ,g'
