@@ -12,9 +12,12 @@ OPT_APT_POLICY=false
 OPT_LEGACY=false
 while [ $# -gt 0 ]; do
 	case "$1" in
+	(--help) echo >&2 "Usage: $0 [--legacy] [-v|-p|--policy]"; exit 0;;
 	(--legacy) OPT_LEGACY=true;;
 	(-v|-p|--policy) OPT_APT_POLICY=true ;;
-	(*) break ;;
+	(--) shift;break;;
+	(-*) echo >&2 "ERROR: invalid option"; exit 1;;
+	(*)  echo >&2 "ERROR: invalid syntax"; exit 1;;
 	esac
 	shift
 done
