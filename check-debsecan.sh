@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if ! command -v debsecan >/dev/null 2>&1; then
+	echo >&2 'debsums command not found (consider to apt-get install debsecan)'
+	exit 1
+fi
+
 s_to_dhms() {
 	local s=$(( $1 % 60 ))
 	local m=$(( $1 / 60 % 60 ))
@@ -12,6 +17,11 @@ s_to_dhms() {
 	fi
 }
 show_cvedb_age() {
+        if [ ! -f /var/lib/debsecan/history ]; then
+                echo >&2 "WARN: debsecan CVE database (not exists)"
+		return 1
+        fi
+
 	local age=$(( $(date +%s) -$(head -2 /var/lib/debsecan/history |tail -1) )) 
 	#local age=$(( $(date +%s) -$(date +%s -d '-1day-7hour-0minute-34second') ))
 
