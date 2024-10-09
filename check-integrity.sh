@@ -6,18 +6,23 @@
 cd "$(dirname "$0")" || exit 1
 
 OPT_VERBOSE=false
-OPT_DEBUG=false
+OPT_CACHE=false
 OPT_NO_CACHE=false
 OPT_IGNORE_AVAILABLE=false
-OPT_IGNORE_LOCAL=false
+if [ "$(ls 2>/dev/null -1 integrity.ignores-enabled/*.egrep |wc -l)" = 0 ]; then
+	OPT_IGNORE_AVAILABLE=true
+fi
+OPT_IGNORE_LOCAL=true
 while [ $# -gt 0 ]; do
 	case "$1" in
 	(-v) OPT_VERBOSE=true ;;
 	(-q) OPT_VERBOSE=false ;;
-	(--debug|--cache) OPT_DEBUG=true ;;
-	(-f|--no-cache) OPT_NO_CACHE=true ;;
+	(--debug|--cache) OPT_CACHE=true ;;
+	(--no-cache) OPT_NO_CACHE=true ;;
 	(-I|--ignore-available) OPT_IGNORE_AVAILABLE=true ;;
+	(--no-ignore-available) OPT_IGNORE_AVAILABLE=false ;;
 	(-L|--ignore-local) OPT_IGNORE_LOCAL=true ;;
+	(--no-ignore-local) OPT_IGNORE_LOCAL=false ;;
 	(--) shift;break;;
 	(-*) echo >&2 "ERROR unknown option $1"; exit 1;;
 	esac
@@ -33,7 +38,7 @@ fi
 tmp_search=$(mktemp)
 tmp_exclude=$(mktemp)
 tmp_ignore_egrep=$(mktemp)
-if ${OPT_DEBUG:-false}; then
+if ${OPT_CACHE:-false}; then
 	tmp_cache=/tmp/integritycheck.$(date +%Y-%m-%d|md5sum|cut -d\  -f1)
 	trap "rm -f $tmp_search $tmp_exclude $tmp_ignore_egrep" EXIT
 else
