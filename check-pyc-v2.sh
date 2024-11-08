@@ -1,5 +1,15 @@
 #!/bin/sh
 
+case "$1" in
+(--experimental-unsafe)
+;;
+(*)
+	echo >&2 "Usage: $0 --experimental-unsafe"
+	exit 1
+;;
+esac
+shift
+
 tmpdir="$(mktemp -d)"
 trap "rm -rf -- '$tmpdir'" EXIT
 
