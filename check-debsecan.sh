@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if ! command -v debsecan >/dev/null 2>&1; then
-	echo >&2 'debsums command not found (consider to apt-get install debsecan)'
+	echo >&2 'debsecan command not found (consider to apt-get install debsecan)'
 	exit 1
 fi
 
