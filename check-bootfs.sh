@@ -21,6 +21,10 @@ done
 sort -u -t\  -k3 > $installed
 #### /CURRENT-FILES ####
 
+# because dpkg -S <glob-pattern>
+glob_quote() {
+	sed "$@" -e 's,[[\\?*],\\\0,g'
+}
 
 #### SAFE-FILES ####
 {
@@ -45,6 +49,7 @@ sort -u -t\  -k3 > $installed
 			find /usr/ -type f -print0 |
 			grep --null-data -E '\.efi(|\.signed)$' |
 			sed --null-data -e 's,^/usr,,g' -e 'p;s,^,/usr,g' |
+			glob_quote --null-data |
 			xargs -0 dpkg-query -S 2>/dev/null |
 			cut -d: -f1
 		} |
@@ -55,11 +60,11 @@ sort -u -t\  -k3 > $installed
 sort -u |
 while read -r f; do
 	[ -f "$f" ] || continue
-	printf %s\\n "$f"
+	printf %s\\0 "$f"
 done |
 #### /SAFE-FILES ####
 #### SAFE-CHECKSUM ####
-xargs sha1sum -z |
+xargs -0 sha1sum -z |
 cut -z -d\  -f1 |
 sed -z -e 's,^,^,g' |
 tr \\0 \\n > $safe
